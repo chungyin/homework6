@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Grayscale - Start Bootstrap Theme</title>
+    <title>homework6</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +28,26 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style>
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 60px;
+            right: 60px;
+            z-index: 99;
+            border: 1px;
+            outline: none;
+            background-color: gray;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 20px;
+        }
+        
+        #myBtn:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -40,8 +59,8 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i> <span class="light">Start</span> Bootstrap
+                <a class="navbar-brand page-scroll" href="https://chungyin.github.io/">
+                    <i></i> <span class="light">ChungYin</span>
                 </a>
             </div>
 
@@ -53,13 +72,19 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="https://chungyin.github.io/homework1/">Homework1</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#download">Download</a>
+                        <a class="page-scroll" href="https://chungyin.github.io/homework3/">homework3</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="https://chungyin.github.io/homework4/">homework4</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="https://chungyin.github.io/homework5/">homework5</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="https://glotravel.github.io/">Final Project</a>
                     </li>
                 </ul>
             </div>
@@ -74,10 +99,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Grayscale</h1>
-                        <p class="intro-text">A free, responsive, one page Bootstrap theme.
-                            <br>Created by Start Bootstrap.</p>
-                        <a href="#about" class="btn btn-circle page-scroll">
+                        <h1 class="brand-heading">Google Analytics</h1>
+                        <p class="intro-text">
+                            Analysing visitors of <a href="https://chungyin.github.io/">My Homepage!</a>
+                        </p>
+                        <a href="#introduction" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>
@@ -86,20 +112,47 @@
         </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="container content-section text-center">
+    <!--button scroll back to top-->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Back to Top</button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+            document.documentElement.scrollTop = 0; // For IE and Firefox
+        }
+    </script>
+    <!-- introduction Section -->
+    <section id="introduction" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>About Grayscale</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+                <h1>What is google analytics</h1>
+                <div style="color:lightgrey">
+                    <p>It is a freemium web analytics service offered by Google that tracks and reports website traffic.</p>
+                    <p>Through the data collected, we can find the ways to improve our website and make it more popular.</p>
+                    <p>It could thus help website developers reflect on their works.</p>
+                </div>
             </div>
         </div>
+        <a href="#analyse" class="btn btn-circle page-scroll">
+            <i class="fa fa-angle-double-down animated"></i>
+        </a>
     </section>
 
-    <!-- Download Section -->
-    <section id="download" class="content-section text-center">
+    <!-- analyse Section -->
+    <section id="analyse" class="content-section text-center">
         <div class="download-section">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
