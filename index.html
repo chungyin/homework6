@@ -21,6 +21,7 @@
 
     <!-- Theme CSS -->
     <link href="css/grayscale.min.css" rel="stylesheet">
+    <script src="echarts.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,6 +30,23 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        
         #myBtn {
             display: none;
             position: fixed;
@@ -153,42 +171,299 @@
 
     <!-- analyse Section -->
     <section id="analyse" class="content-section text-center">
-        <div class="download-section">
+        <div style="background-color: white; color: black; padding:10px 10px 10px 10px;">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Download Grayscale</h2>
-                    <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
+                    <h2>Data abstracted from Google analyst</h2>
+                    <div>
+                        <h3 style="color:grey">Page View</h3>
+                        <div>
+                            <table>
+                                <tr>
+                                    <th>Page</th>
+                                    <th>Page view</th>
+                                </tr>
+                                <tr>
+                                    <td>Homepage</td>
+                                    <td>58</td>
+                                </tr>
+                                <tr>
+                                    <td>Homework1</td>
+                                    <td>16</td>
+                                </tr>
+                                <tr>
+                                    <td>Homework3</td>
+                                    <td>12</td>
+                                </tr>
+                                <tr>
+                                    <td>Homework4</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>Homework5</td>
+                                    <td>19</td>
+                                </tr>
+                            </table>
+                            <div id="mybar" style="width: 600px;height:400px;"></div>
+                            <script type="text/javascript">
+                                option = {
+                                    color: ['darkgrey'],
+                                    tooltip: {
+                                        trigger: 'axis',
+                                        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                                            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+                                        }
+                                    },
+                                    grid: {
+                                        left: '3%',
+                                        right: '4%',
+                                        bottom: '3%',
+                                        containLabel: true
+                                    },
+                                    xAxis: [{
+                                        type: 'category',
+                                        data: ['Homepage', 'Homework1', 'Homework3', 'Homework4', 'Homework5'],
+                                        axisTick: {
+                                            alignWithLabel: true
+                                        }
+                                    }],
+                                    yAxis: [{
+                                        type: 'value'
+                                    }],
+                                    series: [{
+                                            name: 'page view',
+                                            type: 'bar',
+                                            barWidth: '60%',
+                                            data: [58, 16, 12, 4, 19]
+                                        }
+
+                                    ],
+
+                                };
+
+                                var myChart1 = echarts.init(document.getElementById('mybar'));
+                                myChart1.setOption(option);
+                            </script>
+                        </div>
+
+
+                        <h3 style="color:grey">Visitors in This Week</h3>
+                        <table>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount of Visitors</th>
+                            </tr>
+                            <tr>
+                                <td>23 April</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>24 April</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>25 April</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>26 April</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>27 April</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>28 April</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>29 April</td>
+                                <td>1</td>
+                            </tr>
+                        </table>
+
+                        <div id="myline" style="width: 600px;height:400px;"></div>
+                        <script type="text/javascript">
+                            option = {
+                                title: {
+                                    text: 'Visitors in this week'
+                                },
+                                tooltip: {
+                                    trigger: 'axis'
+                                },
+                                legend: {
+                                    data: ['visitor']
+                                },
+                                grid: {
+                                    left: '3%',
+                                    right: '4%',
+                                    bottom: '3%',
+                                    containLabel: true
+                                },
+                                toolbox: {
+                                    feature: {
+                                        saveAsImage: {}
+                                    }
+                                },
+                                xAxis: {
+                                    type: 'category',
+                                    boundaryGap: false,
+                                    data: ['23 April', '24 April', '25 April', '26 April', '27 April', '28 April', '29 April']
+                                },
+                                yAxis: {
+                                    type: 'value'
+                                },
+                                series: [{
+                                        name: 'visitor',
+                                        type: 'line',
+                                        stack: 'amount',
+                                        data: [1, 2, 0, 0, 15, 6, 1]
+                                    }
+
+                                ]
+                            };
+
+                            var myChart2 = echarts.init(document.getElementById('myline'));
+                            myChart2.setOption(option);
+                        </script>
+                        <div>
+                            <h3> Visitor Locations</h3>
+                            <table>
+                                <tr>
+                                    <th>Location</th>
+                                    <th>Visitors</th>
+                                </tr>
+                                <tr>
+                                    <td>Hong Kong</td>
+                                    <td>27</td>
+                                </tr>
+                                <tr>
+                                    <td>Australia</td>
+                                    <td>1</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="outline: solid; outline-style:#555; padding: 10px 10px 10px 10px;">
+                            Among all the visitors of my pages, majority of them are from Hong Kong, and only one of them is from Australia. <br>It was interesting to know that there is someone visiting my website far far away.
+                        </div>
+                        <br>
+                        <div id="main5" style="width: 100%;height:600px;">
+                            <script src="echarts.js"></script>
+                            <script src="js/world.js"></script>
+                            <script>
+                                var chart5 = echarts.init(document.getElementById('main5'));
+                                var latlong = {};
+                                latlong.AU = {
+                                    'latitude': -27,
+                                    'longitude': 133
+                                };
+                                latlong.HK = {
+                                    'latitude': 22.25,
+                                    'longitude': 114.1667
+                                };
+
+
+                                var mapData = [{
+                                    'code': 'AU',
+                                    'name': 'Australia',
+                                    'value': 1,
+                                    'color': '#8aabb0'
+                                }, {
+                                    'code': 'HK',
+                                    'name': '香港',
+                                    'value': 27,
+                                    'color': '#FFD213'
+                                }];
+
+                                var max = -Infinity;
+                                var min = Infinity;
+                                mapData.forEach(function(itemOpt) {
+                                    if (itemOpt.value > max) {
+                                        max = itemOpt.value;
+                                    }
+                                    if (itemOpt.value < min) {
+                                        min = itemOpt.value;
+                                    }
+                                });
+
+                                var option5 = {
+                                    backgroundColor: '#fff',
+                                    title: {
+                                        text: 'Location of Visitors',
+                                        left: 'center',
+                                        top: 'top',
+                                        textStyle: {
+                                            color: '#000000'
+                                        }
+                                    },
+                                    tooltip: {
+                                        trigger: 'value',
+                                    },
+                                    visualMap: {
+                                        show: false,
+                                        min: 0,
+                                        max: max,
+                                        inRange: {
+                                            symbolSize: [6, 60]
+                                        }
+                                    },
+                                    geo: {
+                                        name: 'Location of Visitors',
+                                        type: 'map',
+                                        map: 'world',
+                                        roam: true,
+                                        label: {
+                                            emphasis: {
+                                                show: true
+                                            }
+                                        },
+                                        itemStyle: {
+                                            normal: {
+                                                areaColor: '#092B33',
+                                                borderColor: '#6A7B94'
+                                            },
+                                            emphasis: {
+                                                areaColor: '#2a333d'
+                                            }
+                                        }
+                                    },
+                                    series: [{
+                                        type: 'scatter',
+                                        coordinateSystem: 'geo',
+                                        data: mapData.map(function(itemOpt) {
+                                            return {
+                                                name: itemOpt.name,
+                                                value: [
+                                                    latlong[itemOpt.code].longitude,
+                                                    latlong[itemOpt.code].latitude,
+                                                    itemOpt.value
+                                                ],
+                                                label: {
+                                                    emphasis: {
+                                                        position: 'right',
+                                                        show: true
+                                                    }
+                                                },
+                                                itemStyle: {
+                                                    normal: {
+                                                        color: itemOpt.color
+                                                    }
+                                                }
+                                            };
+                                        })
+                                    }]
+                                };
+                                chart5.setOption(option5);
+                            </script>
+
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Start Bootstrap</h2>
-                <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
-                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
-                </p>
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <div id="map"></div>
 
     <!-- Footer -->
     <footer>
